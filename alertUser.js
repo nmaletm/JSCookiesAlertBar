@@ -19,22 +19,28 @@ cookieBar.stylesheetURL = "http://tools.storn.es/cookies/alertUser.css";
 cookieBar.text = [];
 
 cookieBar.text["es"] = [];
-cookieBar.text["es"]["text"] = "Este sitio web utiliza <b>cookies</b> propios y de terceros. Para más información visite la {politica} o puede borrar las cookies pulsando a {borrar}";
-cookieBar.text["es"]["linkButton"] = "politica de cookies";
+
+
+cookieBar.text["es"]["text"] = "Esta web utiliza 'cookies' propias y de terceros para ofrecerte una mejor experiencia y servicio. Al navegar o utilizar nuestros servicios, aceptas el uso que hacemos de las 'cookies'. Sin embargo, puedes cambiar la configuración de 'cookies' en cualquier momento o puede borrar las cookies pulsando a {borrar}. ";
+cookieBar.text["es"]["moreInfoButton"] = "Más información";
+cookieBar.text["es"]["acceptButton"] = "Acepto";
 cookieBar.text["es"]["clearButton"] = "borrar las cookies";
 cookieBar.text["es"]["messageDeleted"] = "Se han borrado las cookies correctamente";
 cookieBar.text["es"]["barTitle"] = "Accepto el uso de cookies en esta página";
 
 cookieBar.text["en"] = [];
-cookieBar.text["en"]["text"] = "This website need <b>cookies</b> to work (also third-party cookies). You can get more information at {politica} or you can delete the cookies by clicking {borrar}";
-cookieBar.text["en"]["linkButton"] = "cookies policy";
+cookieBar.text["en"]["text"] = "This site uses own and third party 'cookies' to offer a better service and experience. If you continue without changing your settings, we'll assume that you are happy to receive all cookies of this website. However, if you would like to, you can change your cookie settings at any time or you can delete them by clicking {borrar}";
+cookieBar.text["en"]["moreInfoButton"] = "More information";
+cookieBar.text["en"]["acceptButton"] = "Accept";
 cookieBar.text["en"]["clearButton"] = "delete cookies";
 cookieBar.text["en"]["messageDeleted"] = "The cookies have been deleted";
 cookieBar.text["en"]["barTitle"] = "I accept the use of cookies in this page";
 
 cookieBar.text["ca"] = [];
-cookieBar.text["ca"]["text"] = "Aquesta web utilitza <b>cookies</b> propies y de tercers. Per a més informació visita la {politica} o pots esborrar les cookies clicant a {borrar}";
-cookieBar.text["ca"]["linkButton"] = "politica de cookies";
+
+cookieBar.text["ca"]["text"] = "Aquesta web utilitza 'cookies' pròpies i de tercers per oferir-te una millor experiència i servei. Al navegar o utilitzar els nostres serveis, acceptes l'ús que fem de les 'cookies'. De tota manera, pots canviar la configuració de 'cookies' en qualsevol moment o pots esborrar les cookies clicant a {borrar}.";
+cookieBar.text["ca"]["moreInfoButton"] = "Més informació";
+cookieBar.text["ca"]["acceptButton"] = "Accepto";
 cookieBar.text["ca"]["clearButton"] = "esborrar les cookies";
 cookieBar.text["ca"]["messageDeleted"] = "S'han esborrat les cookies correctament";
 cookieBar.text["ca"]["barTitle"] = "Accepto l'ús de cookies en aquesta pàgina web";
@@ -59,11 +65,17 @@ cookieBar.init = function(){
 
 	    var p = document.createElement("p");
 	    var html = this.text[this.currrentLang]["text"];
-	    html = html.replace("{politica}", "<a href='"+this.currrentCookieUrl+"?domain="+location.hostname+"' title='' onclick='cookieBar.doPrevent(event)' target='_blank'>"+this.text[this.currrentLang]["linkButton"]+"</a>");
 	    html = html.replace("{borrar}", "<a href='#' onclick='cookieBar.doClearCookies(event)' title=''>"+this.text[this.currrentLang]["clearButton"]+"</a>");
 	    p.innerHTML = html;
 
+	    var ul = document.createElement("ul");
+	    var html = "";
+	    html += "<li><a href='#' onclick='cookieBar.doClose()' title='"+this.text[this.currrentLang]["barTitle"]+"' class='cookieBtn'>"+this.text[this.currrentLang]["acceptButton"]+"</a></li>";
+	    html += "<li><a href='"+this.currrentCookieUrl+"?domain="+location.hostname+"' title='' onclick='cookieBar.doPrevent(event)' target='_blank' class='cookieBtn'>"+this.text[this.currrentLang]["moreInfoButton"]+"</a></li>";
+	    ul.innerHTML = html;
+
 	bar.appendChild(p);
+	bar.appendChild(ul);
 
 	document.getElementsByTagName("body")[0].appendChild(bar);
 

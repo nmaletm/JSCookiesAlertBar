@@ -15,7 +15,8 @@ html.hasCookieBar.CookieBarbottom{
 	min-height: 40px;
 	cursor: pointer;
 	padding-right: 20px;
-	background: url("close.png") no-repeat top right #333;
+	/*background: url("close.png") no-repeat top right #333;*/
+	background: #333;
 	text-align: center;
 	opacity: 0.7;
 	-webkit-box-sizing: border-box;
@@ -48,8 +49,11 @@ html.hasCookieBar.CookieBarbottom{
 	z-index: 1003;
 	padding: 0;
 	margin: 10px;
+    margin-right: 200px;
 }
-
+#cookieBar p, #cookieBar p a{
+	font-size: 11px;
+}
 #cookieBar p a{
 	color: #aaa;
 }
@@ -59,4 +63,24 @@ html.hasCookieBar.CookieBarbottom{
 	transition: color 0.5s ease-in-out;
     -moz-transition: color 0.5s ease-in-out;
     -webkit-transition: color 0.5s ease-in-out;
+}
+#cookieBar ul {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+}
+#cookieBar ul li {
+    display: block;
+    float: left;
+    margin-left: 8px;
+    width: auto;
+}
+#cookieBar .cookieBtn {
+    background-color: #D1374C;
+    color: #FFFFFF;
+    display: block;
+    font-weight: bold;
+    padding: 3px 5px;
+    text-align: center;
+    text-decoration: none;
 }
